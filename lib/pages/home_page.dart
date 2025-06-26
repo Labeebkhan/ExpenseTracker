@@ -8,8 +8,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void addNewExpense() {
+    // Logic to add a new expense
+    print("Add new expense");
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('Home Page')));
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: addNewExpense,
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
