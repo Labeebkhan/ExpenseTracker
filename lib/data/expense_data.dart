@@ -1,7 +1,8 @@
 import 'package:expensetracker/datetime/date_time_helper.dart';
 import 'package:expensetracker/models/expense_item.dart';
+import 'package:flutter/material.dart';
 
-class ExpenseData {
+class ExpenseData extends ChangeNotifier {
   //list of all Expense
   List<ExpenseItem> overallExpenseList = [];
 
@@ -13,11 +14,13 @@ class ExpenseData {
   // add new expense
   void addNewExpense(ExpenseItem newExpense) {
     overallExpenseList.add(newExpense);
+    notifyListeners();
   }
 
   // delete expense
   void deleteExpense(ExpenseItem expense) {
     overallExpenseList.remove(expense);
+    notifyListeners();
   }
 
   //get weekly item , turns etc! from adatastime object
