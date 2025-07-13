@@ -1,9 +1,8 @@
-// import 'dart:math';
-
 import 'package:expensetracker/data/expense_data.dart';
 import 'package:expensetracker/models/expense_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../components/expense_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -68,22 +67,18 @@ class _HomePageState extends State<HomePage> {
           (context, value, child) => Scaffold(
             floatingActionButton: FloatingActionButton(
               onPressed: addNewExpense,
-              child: Icon(Icons.add),
               shape: CircleBorder(),
               backgroundColor: Colors.blue,
               foregroundColor: Colors.white,
+              child: Icon(Icons.add),
             ),
             body: ListView.builder(
               itemCount: value.getAllExpenseList().length,
               itemBuilder:
-                  (context, index) => ListTile(
-                    title: Text(value.getAllExpenseList()[index].name),
-                    subtitle: Text(
-                      value.getAllExpenseList()[index].dateTime.toString(),
-                    ),
-                    trailing: Text(
-                      '\$' + value.getAllExpenseList()[index].amount,
-                    ),
+                  (context, index) => ExpenseTile(
+                    name: value.getAllExpenseList()[index].name,
+                    amount: value.getAllExpenseList()[index].amount,
+                    dateTime: value.getAllExpenseList()[index].dateTime,
                   ),
             ),
           ),
